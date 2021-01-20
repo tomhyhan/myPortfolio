@@ -419,3 +419,21 @@ header {
   color: var(--color-light-blue);
   transform: scale(1.2);
 }
+
+@media screen and (max-width: 769px) {
+  .about__stacks {
+    flex-direction: column;
+  }
+
+  .stack {
+    margin-bottom: 1em;
+  }
+
+  .skillset {
+    flex-direction: column;
+  }
+
+  .project {
+    flex-grow: 1;
+  }
+}
