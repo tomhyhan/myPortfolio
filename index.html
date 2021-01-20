@@ -163,14 +163,14 @@
     </section>
     <section id="project" class="section">
         <h1>My Projects</h1>
-        <div class="project__category">
-            <button class="category__btn active">All <span class="category__count">1</span></button>
-            <button class="category__btn">Web-Basic <span class="category__count">2</span></button>
-            <button class="category__btn">React <span class="category__count">3</span></button>
-            <button class="category__btn">Back-end <span class="category__count">4</span></button>
+        <div class="project__category" >
+            <button class="category__btn active" data-category="all">All <span class="category__count">1</span></button>
+            <button class="category__btn" data-category="web-basic">Web-Basic <span class="category__count">2</span></button>
+            <button class="category__btn" data-category="react">React <span class="category__count">3</span></button>
+            <button class="category__btn" data-category="back-end">Back-end <span class="category__count">4</span></button>
         </div>
         <div class="projects">
-            <a href="https://github.com/tomhyhan/React-YouTube" class="project" target="blank">
+            <a href="https://github.com/tomhyhan/React-YouTube" class="project" target="blank" data-category="react">
                 <img class="project__img" width=300 src="./images/projects/YouTube.PNG" alt="React YouTube">
                 <div class="project__description">
                     <h3>Cloning YouTube</h3>
@@ -178,7 +178,7 @@
                 </div>
             </a>
 
-            <a href="https://github.com/tomhyhan/React-YouTube" class="project" target="blank">
+            <a href="https://github.com/tomhyhan/React-YouTube" class="project" target="blank" data-category="web-basic">
                 <img class="project__img" width=300 src="./images/projects/YouTube.PNG" alt="React YouTube">
                 <div class="project__description">
                     <h3>Cloning YouTube</h3>
@@ -186,23 +186,22 @@
                 </div>
             </a>
 
-            <a href="https://github.com/AKA-ZSZ/Reminder-App-Project" class="project" target="blank">
+            <a href="https://github.com/AKA-ZSZ/Reminder-App-Project" class="project" target="blank" data-category="back-end">
                 <img class="project__img" width=300 src="./images/projects/reminder.PNG" alt="React YouTube">
                 <div class="project__description">
                     <h3>Reminder Application</h3>
                     <span>React, YouTube API, Post CSS</span>
                 </div>
             </a>
- 
-            <a href="https://github.com/tomhyhan/mypblog" class="project" target="blank">
+            <a href="https://github.com/tomhyhan/mypblog" class="project" target="blank" >
                 <img class="project__img" width=300 src="./images/projects/flask.PNG" alt="React YouTube">
                 <div class="project__description">
                     <h3>Blog Maker</h3>
                     <span>Flask, Bootstrap4, Heroku, Pytest</span>
-                    <small>( <u>https://project-myblog.herokuapp.com/</u> )</small>
+                    <small class="project__links blog-url">( <u>https://project-myblog.herokuapp.com/</u> )</small>
                 </div>
-                
             </a>
+            </div>
             
         </div>
     </section>

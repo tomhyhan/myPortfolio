@@ -63,3 +63,45 @@ upArrow &&
   upArrow.addEventListener('click', () => {
     home.scrollIntoView({ behavior: 'smooth' });
   });
+
+// ======= filtering skills =============
+
+const projectCategory = document.querySelector('.project__category');
+const projects = document.querySelectorAll('.project');
+const projectContainer = document.querySelector('.projects');
+
+projectCategory.addEventListener('click', (e) => {
+  const category =
+    e.target.dataset.category || e.target.parentNode.dataset.category;
+
+  //===== update active state ======
+
+  const active = document.querySelector('.category__btn.active');
+  active.classList.remove('active');
+  const target =
+    e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+  target.classList.add('active');
+
+  //======== add animation to filter ================
+
+  projectContainer.classList.add('animation-delay');
+
+  setTimeout(() => {
+    projects.forEach((project) => {
+      if (category === 'all' || project.dataset.category === category) {
+        project.classList.remove('project--visibility');
+      } else {
+        project.classList.add('project--visibility');
+      }
+    });
+    projectContainer.classList.remove('animation-delay');
+  }, 300);
+});
+
+//=========== manage URLs============
+
+const blogUrl = document.querySelector('.blog-url');
+
+blogUrl.addEventListener('click', () => {
+  window.open('https://project-myblog.herokuapp.com/');
+});
