@@ -98,11 +98,22 @@ p {
 header {
   background: center/cover no-repeat url(./images/bg.png);
 }
+
 #navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--color-white);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: all var(--animation-duration) ease-in;
+  z-index: 1;
+}
+
+.navbar--visible {
+  background-color: var(--color-light-blue);
+  opacity: 0.97;
 }
 
 .navbar__logo {
@@ -141,10 +152,15 @@ header {
 #home {
   text-align: center;
   padding: 2.5em;
+  padding-top: 8rem;
   margin: auto;
   max-width: 60rem;
+  transition: opacity var(--animation-duration) ease-in;
 }
 
+.home--opacity {
+  opacity: 0.2;
+}
 .home__profile {
   width: 15rem;
   height: 15rem;
@@ -420,6 +436,33 @@ header {
   transform: scale(1.2);
 }
 
+/* move up */
+
+.up-arrow {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  font-size: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--animation-duration) ease-in;
+}
+
+.up-arrow--visible {
+  display: block;
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.up-arrow i {
+  background-color: var(--color-dark-pink);
+  color: var(--color-white);
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+/* media */
 @media screen and (max-width: 769px) {
   .about__stacks {
     flex-direction: column;
@@ -435,5 +478,10 @@ header {
 
   .project {
     flex-grow: 1;
+  }
+
+  .project__category {
+    display: flex;
+    flex-direction: column;
   }
 }
