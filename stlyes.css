@@ -128,6 +128,14 @@ header {
   margin: 0 0.3rem;
 }
 
+.navbar__bars {
+  font-size: 2rem;
+  color: var(--color-white);
+  position: fixed;
+  right: 0.5rem;
+  display: none;
+}
+
 .navbar__menu {
   display: flex;
 }
@@ -181,11 +189,15 @@ header {
   border-radius: var(--size-border-radius);
 }
 
+.home__contact:hover {
+  color: var(--color-dark-pink);
+}
+
 /* Sections */
 
 .section {
   text-align: center;
-  padding: 3em;
+  padding: 3rem;
   margin: auto;
 }
 
@@ -473,12 +485,45 @@ header {
 
 /* media */
 @media screen and (max-width: 769px) {
+  #navbar {
+    flex-direction: column;
+    padding: 0.5em 0.2em;
+  }
+
+  .navbar-bg {
+    background-color: var(--color-light-blue);
+  }
+
+  .navbar__logo {
+    align-self: start;
+  }
+
+  .navbar__bars {
+    display: block;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    display: none;
+  }
+
+  .nabar__menu--visible {
+    display: block;
+  }
+
+  .section {
+    padding: 1em;
+    padding-top: 3.5em;
+  }
+
   .about__stacks {
     flex-direction: column;
+    margin-top: 2re;
+    margin-bottom: 1em;
   }
 
   .stack {
-    margin-bottom: 1em;
+    margin-bottom: 1.5rem;
   }
 
   .skillset {
@@ -492,5 +537,9 @@ header {
   .project__category {
     display: flex;
     flex-direction: column;
+  }
+
+  .up-arrow {
+    font-size: 2rem;
   }
 }
