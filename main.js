@@ -24,7 +24,7 @@ navbarMenu.addEventListener('click', (e) => {
   }
   menus.classList.remove('nabar__menu--visible');
   navbar.classList.remove('navbar-bg');
-  scrollInto(link);
+  link && scrollInto(link);
 });
 
 //======== Scrolling to a contact section ========

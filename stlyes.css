@@ -122,6 +122,9 @@ header {
   font-size: var(--font-medium);
 }
 
+.navbar__profile__name {
+  color: var(--color-white);
+}
 .logo__img {
   width: 1em;
   border-radius: var(--size-border-radius);
