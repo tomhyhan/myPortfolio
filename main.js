@@ -17,26 +17,23 @@ document.addEventListener('scroll', () => {
 const navbarMenu = document.querySelector('.navbar__menu');
 
 navbarMenu.addEventListener('click', (e) => {
+  const target = e.target;
+  const link = target.dataset.link;
+  if (link === null) {
+    return;
+  }
   menus.classList.remove('nabar__menu--visible');
   navbar.classList.remove('navbar-bg');
-  scrollInto(e);
+  scrollInto(link);
 });
 
 //======== Scrolling to a contact section ========
 
 const contactBtn = document.querySelector('.home__contact');
 
-contactBtn.addEventListener('click', (e) => {
-  scrollInto(e);
+contactBtn.addEventListener('click', () => {
+  scrollInto('#contact');
 });
-
-//======= Scrolling helper function ==========
-
-function scrollInto(e) {
-  const targetLink = e.target.dataset.link;
-  const scroll = document.querySelector(targetLink);
-  targetLink && scroll.scrollIntoView({ behavior: 'smooth' });
-}
 
 // ===== Fading Home section ====
 
@@ -63,7 +60,7 @@ document.addEventListener('scroll', () => {
 
 upArrow &&
   upArrow.addEventListener('click', () => {
-    home.scrollIntoView({ behavior: 'smooth' });
+    scrollInto('#home');
   });
 
 // ======= filtering skills =============
@@ -117,3 +114,61 @@ bars.addEventListener('click', () => {
   menus.classList.toggle('nabar__menu--visible');
   navbar.classList.toggle('navbar-bg');
 });
+
+// =======Active navbar menu item ===============
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3,
+};
+
+const sectionIds = ['#home', '#about', '#skills', '#project', '#contact'];
+const sections = sectionIds.map((sectionId) =>
+  document.querySelector(sectionId)
+);
+const navbarMenus = sectionIds.map((sectionId) =>
+  document.querySelector(`[data-link="${sectionId}"]`)
+);
+
+let navbarMenuIndex = 0;
+let selectedNavbarMenu = navbarMenus[0];
+
+function selectMenu(selectedMenuItem) {
+  selectedNavbarMenu.classList.remove('navbar__menu__item--active');
+  selectedNavbarMenu = selectedMenuItem;
+  selectedNavbarMenu.classList.add('navbar__menu__item--active');
+}
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+      const findIndex = sectionIds.indexOf(`#${entry.target.id}`);
+      if (entry.boundingClientRect.y < 0) {
+        navbarMenuIndex = findIndex + 1;
+      } else {
+        navbarMenuIndex = findIndex - 1;
+      }
+    }
+  });
+}, options);
+sections.forEach((section) => observer.observe(section));
+
+window.addEventListener('wheel', () => {
+  if (window.scrollY === 10) {
+    navbarMenuIndex = 0;
+  } else if (
+    window.scrollY + window.innerHeight >=
+    document.body.clientHeight
+  ) {
+    navbarMenuIndex = navbarMenus.length - 1;
+  }
+  selectMenu(navbarMenus[navbarMenuIndex]);
+});
+
+//======= Scrolling helper function ==========
+
+function scrollInto(targetLink) {
+  const scroll = document.querySelector(targetLink);
+  targetLink && scroll.scrollIntoView({ behavior: 'smooth' });
+  selectMenu(navbarMenus[sectionIds.indexOf(targetLink)]);
+}
