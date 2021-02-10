@@ -437,6 +437,104 @@ header {
   color: var(--color-blue);
 }
 
+/* demo */
+
+#demo {
+  background-color: var(--color-light-blue);
+  padding: 4.5em 4.5em;
+  position: relative;
+}
+
+.demo__title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.demo__videos {
+  display: flex;
+  justify-content: center;
+}
+
+.demo__video__list {
+  margin: 0.5rem;
+  flex: 1 1 33%;
+  position: relative;
+}
+
+.demo__video__img {
+  border-radius: var(--size-border-radius);
+  width: 100%;
+  height: 100%;
+  transition: all var(--animation-duration) ease-in;
+}
+
+.demo__video__title {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 1px;
+  color: var(--color-white);
+  border-radius: var(--size-border-radius);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  transition: all var(--animation-duration) linear;
+}
+
+.demo__video__title:hover {
+  opacity: 0.7;
+  background-color: var(--color-black);
+}
+
+.demo__video__modal {
+  display: none;
+  position: fixed;
+  padding-top: 10rem;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  left: 0;
+  top: 0;
+  transition: all var(--animation-duration) linear;
+  animation: fadeIn 1s;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.demo__video__style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close {
+  color: rgb(182, 184, 181);
+  font-size: 3.5rem;
+  align-self: right;
+  width: 720px;
+  margin: auto;
+  text-align: right;
+  line-height: 0.8;
+}
+
+.demo__video__close:hover,
+.demo__video__close:focus {
+  color: var(--color-white);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Contact */
 #contact {
   background-color: var(--color-light-pink);
@@ -513,12 +611,17 @@ header {
   .navbar__menu {
     flex-direction: column;
     display: none;
+    width: 100%;
   }
 
   .nabar__menu--visible {
     display: block;
   }
 
+  .navbar__menu__item {
+    width: 90%;
+    text-align: center;
+  }
   .section {
     padding: 1em;
     padding-top: 3.5em;
@@ -546,7 +649,9 @@ header {
     display: flex;
     flex-direction: column;
   }
-
+  .demo__videos {
+    flex-direction: column;
+  }
   .up-arrow {
     font-size: 2rem;
   }

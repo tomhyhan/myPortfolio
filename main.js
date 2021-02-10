@@ -122,7 +122,14 @@ const options = {
   threshold: 0.3,
 };
 
-const sectionIds = ['#home', '#about', '#skills', '#project', '#contact'];
+const sectionIds = [
+  '#home',
+  '#about',
+  '#skills',
+  '#project',
+  '#demo',
+  '#contact',
+];
 const sections = sectionIds.map((sectionId) =>
   document.querySelector(sectionId)
 );
@@ -172,3 +179,27 @@ function scrollInto(targetLink) {
   targetLink && scroll.scrollIntoView({ behavior: 'smooth' });
   selectMenu(navbarMenus[sectionIds.indexOf(targetLink)]);
 }
+
+//=======modal & play da video=============================
+const videoList = document.querySelector('.demo__videos');
+const modal = document.querySelector('.demo__video__modal');
+const modalStyle = document.querySelector('.demo__video__style');
+const closeBtn = document.querySelector('.demo__video__close');
+const playVideo = document.getElementById('ytplayer');
+
+function myFunction(videoId) {
+  playVideo.src = `https://www.youtube.com/embed/${videoId}`;
+  modal.style.display = 'block';
+}
+
+window.onclick = function (event) {
+  if (event.target == modal || event.target == modalStyle) {
+    playVideo.src = '';
+    modal.style.display = 'none';
+  }
+};
+
+closeBtn.addEventListener('click', () => {
+  playVideo.src = '';
+  modal.style.display = 'none';
+});
